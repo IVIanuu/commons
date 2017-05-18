@@ -7,6 +7,7 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.support.annotation.AttrRes;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatDelegate;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -19,7 +20,7 @@ import static android.content.Context.INPUT_METHOD_SERVICE;
 import static com.ivianuu.commons.Commons.getContext;
 
 /**
- * The type Utils.
+ * @author Manuel Wrage (IVIanuu)
  */
 public class Utils {
 
@@ -37,8 +38,8 @@ public class Utils {
      *
      * @param activity the activity
      */
-    public static void hideSoftKeyboard(Activity activity) {
-        if(activity.getCurrentFocus()!=null) {
+    public static void hideSoftKeyboard(@NonNull Activity activity) {
+        if(activity.getCurrentFocus() != null) {
             InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
         }
@@ -49,7 +50,7 @@ public class Utils {
      *
      * @param view the view
      */
-    public static void showSoftKeyboard(View view) {
+    public static void showSoftKeyboard(@NonNull View view) {
         InputMethodManager inputMethodManager
                 = (InputMethodManager) getContext().getSystemService(INPUT_METHOD_SERVICE);
         view.requestFocus();

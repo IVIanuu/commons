@@ -3,12 +3,13 @@ package com.ivianuu.commons;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.annotation.Nullable;
 import android.telephony.TelephonyManager;
 
 import com.ivianuu.commons.Commons;
 
 /**
- * The type Network utils.
+ * @author Manuel Wrage (IVIanuu)
  */
 public class NetworkUtils {
 
@@ -27,6 +28,7 @@ public class NetworkUtils {
      *
      * @return the network info
      */
+    @Nullable
     public static NetworkInfo getNetworkInfo() {
         ConnectivityManager cm =
                 (ConnectivityManager) Commons.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);

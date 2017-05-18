@@ -7,6 +7,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.os.PowerManager;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.ivianuu.commons.Commons;
@@ -15,12 +16,12 @@ import com.ivianuu.commons.Utils;
 import java.io.File;
 
 /**
- * The type Access checker.
+ * @author Manuel Wrage (IVIanuu)
  */
 public class AccessUtils {
 
     /**
-     * Has overlay permission boolean.
+     * Check if we have overlay permssion.
      *
      * @return the boolean
      */
@@ -53,7 +54,7 @@ public class AccessUtils {
      * @param clazz    the clazz
      * @return the boolean
      */
-    public static boolean isAccessibilityEnabled(Class clazz) {
+    public static boolean isAccessibilityEnabled(@NonNull Class clazz) {
         int accessibilityEnabled = 0;
         final String service = Commons.getContext().getPackageName() + "/" + clazz.getCanonicalName();
         try {
@@ -90,7 +91,7 @@ public class AccessUtils {
      * @param clazz the clazz
      * @return the boolean
      */
-    public static boolean isDeviceAdminEnabled(Class clazz) {
+    public static boolean isDeviceAdminEnabled(@NonNull Class clazz) {
         ComponentName admin = new ComponentName(Commons.getContext(), clazz);
         DevicePolicyManager dpm = (DevicePolicyManager)
                 Commons.getContext().getSystemService(Context.DEVICE_POLICY_SERVICE);

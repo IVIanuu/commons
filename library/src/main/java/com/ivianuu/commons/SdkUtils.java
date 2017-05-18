@@ -3,9 +3,8 @@ package com.ivianuu.commons;
 import android.os.Build;
 
 /**
- * Author IVIanuu.
+ * @author Manuel Wrage (IVIanuu)
  */
-
 public class SdkUtils {
 
     /**

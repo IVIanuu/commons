@@ -12,7 +12,7 @@ import com.ivianuu.commons.Commons;
 import static com.ivianuu.commons.Commons.getContext;
 
 /**
- * The type Screen utils.
+ * @author Manuel Wrage (IVIanuu)
  */
 public class ScreenUtils {
 
@@ -34,9 +34,9 @@ public class ScreenUtils {
      *
      * @return the rotation
      */
-    public static int getRotation(Context context) {
+    public static int getRotation() {
         WindowManager windowManager =
-                (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+                (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
         return windowManager.getDefaultDisplay().getRotation();
     }
 
@@ -56,11 +56,6 @@ public class ScreenUtils {
      */
     public static int getScreenHeight() {
         return Resources.getSystem().getDisplayMetrics().heightPixels;
-    }
-
-    public static boolean hasNavBar () {
-        int id = getContext().getResources().getIdentifier("config_showNavigationBar", "bool", "android");
-        return id > 0 && getContext().getResources().getBoolean(id);
     }
 
 }

@@ -1,9 +1,11 @@
 package com.ivianuu.commons;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 /**
- * The type Commons.
+ * @author Manuel Wrage (IVIanuu)
  */
 public class Commons {
 
@@ -14,6 +16,7 @@ public class Commons {
      *
      * @return the context
      */
+
     public static Context getContext() {
         if (mContext == null) throw new IllegalStateException("you have to call Commons.init() first");
         return mContext;
@@ -24,7 +27,7 @@ public class Commons {
      *
      * @param context the context
      */
-    public static void init(Context context) {
+    public static void init(@NonNull Context context) {
         mContext = context.getApplicationContext();
     }
 }

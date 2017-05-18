@@ -11,7 +11,7 @@ import com.ivianuu.commons.Commons;
 import static com.ivianuu.commons.SdkUtils.isLollipop;
 
 /**
- * The type Power utils.
+ * @author Manuel Wrage (IVIanuu)
  */
 public class PowerUtils {
 

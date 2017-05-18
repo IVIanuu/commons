@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.widget.AppCompatDrawableManager;
 import android.util.Base64;
@@ -16,7 +17,7 @@ import com.ivianuu.commons.Utils;
 import java.io.ByteArrayOutputStream;
 
 /**
- * The type Image helper.
+ * @author Manuel Wrage (IVIanuu)
  */
 public class ImageUtils {
 
@@ -26,7 +27,8 @@ public class ImageUtils {
      * @param bitmap the bitmap
      * @return the string
      */
-    public static String bitmapToString(Bitmap bitmap) {
+    @NonNull
+    public static String bitmapToString(@NonNull Bitmap bitmap) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
         byte[] b = byteArrayOutputStream.toByteArray();
@@ -39,7 +41,8 @@ public class ImageUtils {
      * @param encoded the encoded
      * @return the bitmap
      */
-    public static Bitmap stringToBitmap(String encoded) {
+    @NonNull
+    public static Bitmap stringToBitmap(@NonNull String encoded) {
         byte[] imageAsBytes = Base64.decode(encoded.getBytes(), 0);
         return BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
     }
@@ -50,7 +53,8 @@ public class ImageUtils {
      * @param drawable the drawable
      * @return the bitmap
      */
-    public static Bitmap drawableToBitmap (Drawable drawable) {
+    @NonNull
+    public static Bitmap drawableToBitmap(@NonNull Drawable drawable) {
         Bitmap bitmap;
 
         if (drawable instanceof BitmapDrawable) {
@@ -78,7 +82,8 @@ public class ImageUtils {
      * @param drawableId the drawable id
      * @return the bitmap
      */
-    public static Bitmap vectorDrawableToBitmap(int drawableId) {
+    @NonNull
+    public static Bitmap vectorDrawableToBitmap(@NonNull int drawableId) {
         @SuppressLint("RestrictedApi")
         Drawable drawable = AppCompatDrawableManager.get().getDrawable(Commons.getContext(), drawableId);
         if (!SdkUtils.isLollipop()) {

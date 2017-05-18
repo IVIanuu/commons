@@ -1,5 +1,6 @@
 package com.ivianuu.commons;
 
+import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,19 +8,19 @@ import android.view.ViewGroup;
 import com.ivianuu.commons.Commons;
 
 /**
- * The type View utils.
+ * @author Manuel Wrage (IVIanuu)
  */
 public class ViewUtils {
 
     /**
-     * Hit test boolean.
+     * Checks if the coordinates are inside the view.
      *
      * @param v the v
-     * @param x the x
-     * @param y the y
-     * @return the boolean
+     * @param x x of the point
+     * @param y y of the point
+     * @return inside the view
      */
-    public static boolean hitTest(View v, int x, int y) {
+    public static boolean hitTest(@NonNull View v, int x, int y) {
         final int tx = (int) (v.getTranslationX() + 0.5f);
         final int ty = (int) (v.getTranslationY() + 0.5f);
         final int left = v.getLeft() + tx;
@@ -31,28 +32,28 @@ public class ViewUtils {
     }
 
     /**
-     * Gets center y.
+     * Gets the center y of the view.
      *
      * @param view the view
      * @return the center y
      */
-    public static int getCenterY(View view) {
+    public static int getCenterY(@NonNull View view) {
         return (int) (view.getY() + view.getHeight() / 2);
     }
 
     /**
-     * Gets center x.
+     * Gets center x of the view.
      *
      * @param view the view
      * @return the center x
      */
-    public static int getCenterX(View view) {
+    public static int getCenterX(@NonNull View view) {
         return (int) (view.getX() + view.getWidth() / 2);
     }
 
 
     /**
-     * Convert dp to pixel int.
+     * Converts dp to pixels.
      *
      * @param dp the dp
      * @return the int
@@ -72,8 +73,8 @@ public class ViewUtils {
      * @param r right margin
      * @param b bottom margin
      */
-    public static void setMargins(View v, int l, int t, int r, int b) {
-        if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+    public static void setMargins(@NonNull View v, int l, int t, int r, int b) {
+        if (v.getLayoutParams() != null && v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
             ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
             p.setMargins(l, t, r, b);
             v.requestLayout();

@@ -1,8 +1,7 @@
 package com.ivianuu.commons;
 
 /**
- * Author IVIanuu.
+ * @author Manuel Wrage (IVIanuu)
  */
-
 public class PreConditionUtils {
 }

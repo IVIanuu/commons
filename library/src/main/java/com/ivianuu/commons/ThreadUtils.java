@@ -3,7 +3,7 @@ package com.ivianuu.commons;
 import android.os.Looper;
 
 /**
- * The type Thread utils.
+ * @author Manuel Wrage (IVIanuu)
  */
 public class ThreadUtils {
 
