@@ -1,4 +1,4 @@
-package com.ivianuu.commons.helper;
+package com.ivianuu.commons;
 
 import android.app.AppOpsManager;
 import android.app.admin.DevicePolicyManager;
@@ -10,14 +10,14 @@ import android.provider.Settings;
 import android.text.TextUtils;
 
 import com.ivianuu.commons.Commons;
-import com.ivianuu.commons.util.Utils;
+import com.ivianuu.commons.Utils;
 
 import java.io.File;
 
 /**
  * The type Access checker.
  */
-public class AccessChecker {
+public class AccessUtils {
 
     /**
      * Has overlay permission boolean.
@@ -25,7 +25,7 @@ public class AccessChecker {
      * @return the boolean
      */
     public static boolean hasOverlayPermission() {
-        if (Utils.isMarshmallow()) {
+        if (SdkUtils.isMarshmallow()) {
             if (!Settings.canDrawOverlays(Commons.getContext())) {
                 return false;
             }
@@ -103,7 +103,7 @@ public class AccessChecker {
      * @return the boolean
      */
     public static boolean isBatteryOptimized() {
-        if (!Utils.isMarshmallow()) return false;
+        if (!SdkUtils.isMarshmallow()) return false;
         PowerManager pm = (PowerManager) Commons.getContext().getSystemService(Context.POWER_SERVICE);
         return !pm.isIgnoringBatteryOptimizations(Commons.getContext().getPackageName());
     }
@@ -114,7 +114,7 @@ public class AccessChecker {
      * @return the boolean
      */
     public static boolean hasPackageUsageStatsAccess() {
-        if (!Utils.isLollipop()) return true;
+        if (!SdkUtils.isLollipop()) return true;
         AppOpsManager appOps = (AppOpsManager) Commons.getContext()
                 .getSystemService(Context.APP_OPS_SERVICE);
         int mode = appOps.checkOpNoThrow("android:get_usage_stats",
@@ -129,14 +129,12 @@ public class AccessChecker {
      */
     public static boolean hasRootAccess() {
         boolean found = false;
-        if (!found) {
-            String[] places = {"/data/app/eu.chainfire.supersu-2", "/sbin/", "/system/bin/", "/system/xbin/", "/data/local/xbin/",
-                    "/data/local/bin/", "/system/sd/xbin/", "/system/bin/failsafe/", "/data/local/"};
-            for (String where : places) {
-                if (new File(where + "su").exists()) {
-                    found = true;
-                    break;
-                }
+        String[] places = {"/data/app/eu.chainfire.supersu-2", "/sbin/", "/system/bin/", "/system/xbin/", "/data/local/xbin/",
+                "/data/local/bin/", "/system/sd/xbin/", "/system/bin/failsafe/", "/data/local/"};
+        for (String where : places) {
+            if (new File(where + "su").exists()) {
+                found = true;
+                break;
             }
         }
         return found;

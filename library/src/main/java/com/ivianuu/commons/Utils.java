@@ -1,4 +1,4 @@
-package com.ivianuu.commons.util;
+package com.ivianuu.commons;
 
 import android.app.Activity;
 import android.content.Context;
@@ -24,59 +24,12 @@ import static com.ivianuu.commons.Commons.getContext;
 public class Utils {
 
     /**
-     * Is kit kat boolean.
-     *
-     * @return the boolean
-     */
-    public static boolean isKitKat() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
-    }
-
-    /**
-     * Is lollipop boolean.
-     *
-     * @return the boolean
-     */
-    public static boolean isLollipop() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
-    }
-
-    /**
-     * Is marshmallow boolean.
-     *
-     * @return the boolean
-     */
-    public static boolean isMarshmallow() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
-    }
-
-    /**
-     * Is nougat boolean.
-     *
-     * @return the boolean
-     */
-    public static boolean isNougat() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.N;
-    }
-
-    /**
      * Is night mode boolean.
      *
      * @return the boolean
      */
     public static boolean isNightMode() {
         return AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES;
-    }
-
-    /**
-     * Is tablet boolean.
-     *
-     * @return the boolean
-     */
-    public static boolean isTablet() {
-        return (getContext().getResources().getConfiguration().screenLayout
-                & Configuration.SCREENLAYOUT_SIZE_MASK)
-                >= Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
 
     /**

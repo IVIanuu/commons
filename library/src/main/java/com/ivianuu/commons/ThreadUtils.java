@@ -1,4 +1,4 @@
-package com.ivianuu.commons.util;
+package com.ivianuu.commons;
 
 import android.os.Looper;
 

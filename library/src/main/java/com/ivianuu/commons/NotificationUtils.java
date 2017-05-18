@@ -1,20 +1,17 @@
-package com.ivianuu.commons.helper;
+package com.ivianuu.commons;
 
 import android.app.Notification;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.service.notification.StatusBarNotification;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.RemoteInput;
 
-import com.ivianuu.commons.Commons;
-
 /**
  * The type Notification helper.
  */
-public class NotificationHelper {
+public class NotificationUtils {
 
     public static String getNotificationText(StatusBarNotification statusBarNotification, String field) {
         return getNotificationText(statusBarNotification.getNotification(), field);
@@ -106,7 +103,7 @@ public class NotificationHelper {
     }
 
     public static boolean canReply(Notification notification) {
-        return NotificationHelper.extractRemote(notification) != null;
+        return NotificationUtils.extractRemote(notification) != null;
     }
 
     public static boolean hasAction(StatusBarNotification statusBarNotification) {

@@ -1,4 +1,4 @@
-package com.ivianuu.commons.util;
+package com.ivianuu.commons;
 
 import android.content.Context;
 import android.content.res.Configuration;

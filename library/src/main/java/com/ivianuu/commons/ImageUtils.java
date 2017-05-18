@@ -1,6 +1,6 @@
-package com.ivianuu.commons.helper;
+package com.ivianuu.commons;
 
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -11,14 +11,14 @@ import android.support.v7.widget.AppCompatDrawableManager;
 import android.util.Base64;
 
 import com.ivianuu.commons.Commons;
-import com.ivianuu.commons.util.Utils;
+import com.ivianuu.commons.Utils;
 
 import java.io.ByteArrayOutputStream;
 
 /**
  * The type Image helper.
  */
-public class ImageHelper {
+public class ImageUtils {
 
     /**
      * Bitmap to string string.
@@ -79,8 +79,9 @@ public class ImageHelper {
      * @return the bitmap
      */
     public static Bitmap vectorDrawableToBitmap(int drawableId) {
+        @SuppressLint("RestrictedApi")
         Drawable drawable = AppCompatDrawableManager.get().getDrawable(Commons.getContext(), drawableId);
-        if (!Utils.isLollipop()) {
+        if (!SdkUtils.isLollipop()) {
             drawable = (DrawableCompat.wrap(drawable)).mutate();
         }
 

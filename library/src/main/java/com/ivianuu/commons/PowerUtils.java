@@ -1,4 +1,4 @@
-package com.ivianuu.commons.util;
+package com.ivianuu.commons;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +8,7 @@ import android.os.PowerManager;
 
 import com.ivianuu.commons.Commons;
 
-import static com.ivianuu.commons.util.Utils.isLollipop;
+import static com.ivianuu.commons.SdkUtils.isLollipop;
 
 /**
  * The type Power utils.
