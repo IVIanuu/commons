@@ -7,7 +7,7 @@ import static com.ivianuu.commons.Commons.getContext;
 /**
  * @author Manuel Wrage (IVIanuu)
  */
-public class DeviceUtils {
+public class DeviceUtil {
 
     /**
      * Is tablet boolean.

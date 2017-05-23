@@ -11,7 +11,7 @@ import com.ivianuu.commons.Commons;
 /**
  * @author Manuel Wrage (IVIanuu)
  */
-public class NetworkUtils {
+public class NetworkUtil {
 
     /**
      * Is connected boolean.

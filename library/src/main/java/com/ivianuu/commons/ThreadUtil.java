@@ -5,7 +5,7 @@ import android.os.Looper;
 /**
  * @author Manuel Wrage (IVIanuu)
  */
-public class ThreadUtils {
+public class ThreadUtil {
 
     /**
      * Is main thread boolean.

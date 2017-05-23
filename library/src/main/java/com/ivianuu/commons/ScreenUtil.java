@@ -14,7 +14,7 @@ import static com.ivianuu.commons.Commons.getContext;
 /**
  * @author Manuel Wrage (IVIanuu)
  */
-public class ScreenUtils {
+public class ScreenUtil {
 
     public static boolean isPortrait() {
         return !isLandscape();

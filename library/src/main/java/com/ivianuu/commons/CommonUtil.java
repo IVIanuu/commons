@@ -22,7 +22,7 @@ import static com.ivianuu.commons.Commons.getContext;
 /**
  * @author Manuel Wrage (IVIanuu)
  */
-public class Utils {
+public class CommonUtil {
 
     /**
      * Is night mode boolean.

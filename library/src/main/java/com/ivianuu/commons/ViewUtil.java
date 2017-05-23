@@ -10,7 +10,7 @@ import com.ivianuu.commons.Commons;
 /**
  * @author Manuel Wrage (IVIanuu)
  */
-public class ViewUtils {
+public class ViewUtil {
 
     /**
      * Checks if the coordinates are inside the view.

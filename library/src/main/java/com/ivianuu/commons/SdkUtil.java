@@ -5,7 +5,7 @@ import android.os.Build;
 /**
  * @author Manuel Wrage (IVIanuu)
  */
-public class SdkUtils {
+public class SdkUtil {
 
     /**
      * Is kit kat boolean.

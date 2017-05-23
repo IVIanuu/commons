@@ -8,12 +8,12 @@ import android.os.PowerManager;
 
 import com.ivianuu.commons.Commons;
 
-import static com.ivianuu.commons.SdkUtils.isLollipop;
+import static com.ivianuu.commons.SdkUtil.isLollipop;
 
 /**
  * @author Manuel Wrage (IVIanuu)
  */
-public class PowerUtils {
+public class PowerUtil {
 
     private static final int LOW_BATTERY = 15;
 

@@ -10,15 +10,12 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
-import com.ivianuu.commons.Commons;
-import com.ivianuu.commons.Utils;
-
 import java.io.File;
 
 /**
  * @author Manuel Wrage (IVIanuu)
  */
-public class AccessUtils {
+public class AccessUtil {
 
     /**
      * Check if we have overlay permssion.
@@ -26,7 +23,7 @@ public class AccessUtils {
      * @return the boolean
      */
     public static boolean hasOverlayPermission() {
-        if (SdkUtils.isMarshmallow()) {
+        if (SdkUtil.isMarshmallow()) {
             if (!Settings.canDrawOverlays(Commons.getContext())) {
                 return false;
             }
@@ -104,7 +101,7 @@ public class AccessUtils {
      * @return the boolean
      */
     public static boolean isBatteryOptimized() {
-        if (!SdkUtils.isMarshmallow()) return false;
+        if (!SdkUtil.isMarshmallow()) return false;
         PowerManager pm = (PowerManager) Commons.getContext().getSystemService(Context.POWER_SERVICE);
         return !pm.isIgnoringBatteryOptimizations(Commons.getContext().getPackageName());
     }
@@ -115,7 +112,7 @@ public class AccessUtils {
      * @return the boolean
      */
     public static boolean hasPackageUsageStatsAccess() {
-        if (!SdkUtils.isLollipop()) return true;
+        if (!SdkUtil.isLollipop()) return true;
         AppOpsManager appOps = (AppOpsManager) Commons.getContext()
                 .getSystemService(Context.APP_OPS_SERVICE);
         int mode = appOps.checkOpNoThrow("android:get_usage_stats",

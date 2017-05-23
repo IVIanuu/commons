@@ -13,7 +13,7 @@ import android.support.v4.app.RemoteInput;
 /**
  * @author Manuel Wrage (IVIanuu)
  */
-public class NotificationUtils {
+public class NotificationUtil {
 
     @Nullable
     public static String getNotificationText(@NonNull StatusBarNotification statusBarNotification,@NonNull String field) {
@@ -105,7 +105,7 @@ public class NotificationUtils {
     }
 
     public static boolean canReply(@NonNull Notification notification) {
-        return NotificationUtils.extractRemote(notification) != null;
+        return NotificationUtil.extractRemote(notification) != null;
     }
 
     public static boolean hasAction(@NonNull StatusBarNotification statusBarNotification) {

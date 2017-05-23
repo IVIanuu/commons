@@ -11,15 +11,12 @@ import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.widget.AppCompatDrawableManager;
 import android.util.Base64;
 
-import com.ivianuu.commons.Commons;
-import com.ivianuu.commons.Utils;
-
 import java.io.ByteArrayOutputStream;
 
 /**
  * @author Manuel Wrage (IVIanuu)
  */
-public class ImageUtils {
+public class ImageUtil {
 
     /**
      * Bitmap to string string.
@@ -86,7 +83,7 @@ public class ImageUtils {
     public static Bitmap vectorDrawableToBitmap(@NonNull int drawableId) {
         @SuppressLint("RestrictedApi")
         Drawable drawable = AppCompatDrawableManager.get().getDrawable(Commons.getContext(), drawableId);
-        if (!SdkUtils.isLollipop()) {
+        if (!SdkUtil.isLollipop()) {
             drawable = (DrawableCompat.wrap(drawable)).mutate();
         }
 
