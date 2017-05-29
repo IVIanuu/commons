@@ -1,10 +1,12 @@
 package com.ivianuu.commons;
 
+import android.annotation.TargetApi;
 import android.app.AppOpsManager;
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.os.Build;
 import android.os.PowerManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -18,10 +20,11 @@ import java.io.File;
 public class AccessUtil {
 
     /**
-     * Check if we have overlay permssion.
+     * Check if we have overlay permission.
      *
      * @return the boolean
      */
+    @TargetApi(Build.VERSION_CODES.M)
     public static boolean hasOverlayPermission() {
         if (SdkUtil.isMarshmallow()) {
             if (!Settings.canDrawOverlays(Commons.getContext())) {
@@ -37,6 +40,7 @@ public class AccessUtil {
      *
      * @return the boolean
      */
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     public static boolean hasNotificationAccess() {
         ContentResolver contentResolver = Commons.getContext().getContentResolver();
         String enabledNotificationListeners = Settings.Secure.getString(contentResolver, "enabled_notification_listeners");
@@ -100,6 +104,7 @@ public class AccessUtil {
      *
      * @return the boolean
      */
+    @TargetApi(Build.VERSION_CODES.M)
     public static boolean isBatteryOptimized() {
         if (!SdkUtil.isMarshmallow()) return false;
         PowerManager pm = (PowerManager) Commons.getContext().getSystemService(Context.POWER_SERVICE);
@@ -111,6 +116,7 @@ public class AccessUtil {
      *
      * @return the boolean
      */
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public static boolean hasPackageUsageStatsAccess() {
         if (!SdkUtil.isLollipop()) return true;
         AppOpsManager appOps = (AppOpsManager) Commons.getContext()

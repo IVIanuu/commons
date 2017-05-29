@@ -1,8 +1,10 @@
 package com.ivianuu.commons;
 
+import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.service.notification.StatusBarNotification;
 import android.support.annotation.NonNull;
@@ -13,6 +15,7 @@ import android.support.v4.app.RemoteInput;
 /**
  * @author Manuel Wrage (IVIanuu)
  */
+@TargetApi(Build.VERSION_CODES.KITKAT)
 public class NotificationUtil {
 
     @Nullable

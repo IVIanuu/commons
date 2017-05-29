@@ -6,8 +6,6 @@ import android.content.IntentFilter;
 import android.os.BatteryManager;
 import android.os.PowerManager;
 
-import com.ivianuu.commons.Commons;
-
 import static com.ivianuu.commons.SdkUtil.isLollipop;
 
 /**
@@ -46,7 +44,7 @@ public class PowerUtil {
         final int plugged = intent.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);
         return plugged == BatteryManager.BATTERY_PLUGGED_AC
                 || plugged == BatteryManager.BATTERY_PLUGGED_USB
-                || plugged == BatteryManager.BATTERY_PLUGGED_WIRELESS;
+                || (SdkUtil.isJellyBeanMr1() && plugged == BatteryManager.BATTERY_PLUGGED_WIRELESS);
     }
 
     /**
