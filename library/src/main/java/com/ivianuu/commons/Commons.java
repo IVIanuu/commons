@@ -27,6 +27,6 @@ public class Commons {
      * @param context the context
      */
     public static void init(@NonNull Context context) {
-        context = context.getApplicationContext();
+        Commons.context = context.getApplicationContext();
     }
 }
