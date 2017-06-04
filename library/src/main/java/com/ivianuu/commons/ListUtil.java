@@ -17,30 +17,26 @@
 
 package com.ivianuu.commons;
 
-import android.content.res.Configuration;
+import android.support.annotation.NonNull;
 
-import static com.ivianuu.commons.Commons.getContext;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Manuel Wrage (IVIanuu)
  */
-public final class DeviceUtil {
 
-    private DeviceUtil() {}
+public class ListUtil {
 
     /**
-     * Is tablet boolean.
-     *
-     * @return the boolean
+     * Returns a new list without null values
      */
-    public static boolean isTablet() {
-        return (getContext().getResources().getConfiguration().screenLayout
-                & Configuration.SCREENLAYOUT_SIZE_MASK)
-                >= Configuration.SCREENLAYOUT_SIZE_LARGE;
-    }
+    public static <T> List<T> compact(@NonNull List<T> originalList) {
+        List<T> copy = new ArrayList<>();
+        for (T t : originalList) {
+            if (t != null) copy.add(t);
+        }
 
-    public static boolean hasNavBar () {
-        int id = getContext().getResources().getIdentifier("config_showNavigationBar", "bool", "android");
-        return id > 0 && getContext().getResources().getBoolean(id);
+        return copy;
     }
 }

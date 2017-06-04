@@ -1,28 +1,30 @@
+/*
+ * Copyright 2017 Manuel Wrage
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
 package com.ivianuu.commons;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
-import android.os.Build;
-import android.support.annotation.AttrRes;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatDelegate;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
-
-import com.ivianuu.commons.Commons;
-
-import static android.content.Context.INPUT_METHOD_SERVICE;
-import static com.ivianuu.commons.Commons.getContext;
 
 /**
  * @author Manuel Wrage (IVIanuu)
  */
-public class CommonUtil {
+public final class CommonUtil {
+
+    private CommonUtil(){}
 
     /**
      * Is night mode boolean.
@@ -33,37 +35,6 @@ public class CommonUtil {
         return AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES;
     }
 
-    /**
-     * Hide soft keyboard.
-     *
-     * @param activity the activity
-     */
-    public static void hideSoftKeyboard(@NonNull Activity activity) {
-        if(activity.getCurrentFocus() != null) {
-            InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(INPUT_METHOD_SERVICE);
-            inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
-        }
-    }
 
-    /**
-     * Show soft keyboard.
-     *
-     * @param view the view
-     */
-    public static void showSoftKeyboard(@NonNull View view) {
-        InputMethodManager inputMethodManager
-                = (InputMethodManager) getContext().getSystemService(INPUT_METHOD_SERVICE);
-        view.requestFocus();
-        inputMethodManager.showSoftInput(view, 0);
-    }
-
-    public static int resolveColor(@AttrRes int attr) {
-        TypedArray a = getContext().getTheme().obtainStyledAttributes(new int[]{attr});
-        try {
-            return a.getColor(0, 0);
-        } finally {
-            a.recycle();
-        }
-    }
 
 }

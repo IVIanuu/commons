@@ -17,27 +17,15 @@
 
 package com.ivianuu.commons;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 /**
  * @author Manuel Wrage (IVIanuu)
  */
-public final class Commons {
 
-    @SuppressLint("StaticFieldLeak")
-    private static Context context;
+public final class ObjectUtil {
 
-    static Context getContext() {
-        if (context == null) throw new IllegalStateException("you have to call Commons.init() first");
-        return context;
-    }
-
-    /**
-     * Initializes commons
-     */
-    public static void init(@NonNull Context context) {
-        Commons.context = context.getApplicationContext();
+    public static boolean nonNull(@Nullable Object object) {
+        return object != null;
     }
 }

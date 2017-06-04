@@ -17,30 +17,30 @@
 
 package com.ivianuu.commons;
 
-import android.content.res.Configuration;
+import android.support.annotation.NonNull;
 
-import static com.ivianuu.commons.Commons.getContext;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Manuel Wrage (IVIanuu)
  */
-public final class DeviceUtil {
 
-    private DeviceUtil() {}
+public final class MapUtil {
+
+    private MapUtil() {}
 
     /**
-     * Is tablet boolean.
-     *
-     * @return the boolean
+     * Returns a new map with all `null` values removed.
      */
-    public static boolean isTablet() {
-        return (getContext().getResources().getConfiguration().screenLayout
-                & Configuration.SCREENLAYOUT_SIZE_MASK)
-                >= Configuration.SCREENLAYOUT_SIZE_LARGE;
+    @NonNull public static <S, T> Map<S, T> compact(final @NonNull Map<S, T> source) {
+        final Map<S, T> output = new HashMap<>(source);
+        for (final S key : source.keySet()) {
+            if (source.get(key) == null) {
+                output.remove(key);
+            }
+        }
+        return output;
     }
 
-    public static boolean hasNavBar () {
-        int id = getContext().getResources().getIdentifier("config_showNavigationBar", "bool", "android");
-        return id > 0 && getContext().getResources().getBoolean(id);
-    }
 }

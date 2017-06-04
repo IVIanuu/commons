@@ -17,30 +17,28 @@
 
 package com.ivianuu.commons;
 
-import android.content.res.Configuration;
-
-import static com.ivianuu.commons.Commons.getContext;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.util.Patterns;
 
 /**
  * @author Manuel Wrage (IVIanuu)
  */
-public final class DeviceUtil {
 
-    private DeviceUtil() {}
+public final class StringUtil {
 
-    /**
-     * Is tablet boolean.
-     *
-     * @return the boolean
-     */
-    public static boolean isTablet() {
-        return (getContext().getResources().getConfiguration().screenLayout
-                & Configuration.SCREENLAYOUT_SIZE_MASK)
-                >= Configuration.SCREENLAYOUT_SIZE_LARGE;
+    private StringUtil() {}
+
+    public static boolean isEmail(final @NonNull CharSequence str) {
+        return Patterns.EMAIL_ADDRESS.matcher(str).matches();
     }
 
-    public static boolean hasNavBar () {
-        int id = getContext().getResources().getIdentifier("config_showNavigationBar", "bool", "android");
-        return id > 0 && getContext().getResources().getBoolean(id);
+    public static boolean isEmpty(final @Nullable String str) {
+        return str == null || str.trim().length() == 0;
     }
+
+    public static boolean isPresent(final @Nullable String str) {
+        return !isEmpty(str);
+    }
+
 }

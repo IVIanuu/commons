@@ -17,30 +17,27 @@
 
 package com.ivianuu.commons;
 
-import android.content.res.Configuration;
-
-import static com.ivianuu.commons.Commons.getContext;
+import android.support.annotation.NonNull;
+import android.support.v4.util.Pair;
 
 /**
  * @author Manuel Wrage (IVIanuu)
  */
-public final class DeviceUtil {
 
-    private DeviceUtil() {}
+public final class PairUtil {
+    private PairUtil() {}
 
     /**
-     * Is tablet boolean.
-     *
-     * @return the boolean
+     * Returns the first of any input pair
      */
-    public static boolean isTablet() {
-        return (getContext().getResources().getConfiguration().screenLayout
-                & Configuration.SCREENLAYOUT_SIZE_MASK)
-                >= Configuration.SCREENLAYOUT_SIZE_LARGE;
+    public static <R> R first(final @NonNull Pair<R, ?> anyPair) {
+        return anyPair.first;
     }
 
-    public static boolean hasNavBar () {
-        int id = getContext().getResources().getIdentifier("config_showNavigationBar", "bool", "android");
-        return id > 0 && getContext().getResources().getBoolean(id);
+    /**
+     * Returns the second of any input pair
+     */
+    public static <R> R second(final @NonNull Pair<?, R> anyPair) {
+        return anyPair.second;
     }
 }
