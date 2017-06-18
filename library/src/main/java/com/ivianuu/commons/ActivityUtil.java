@@ -31,6 +31,7 @@ import android.view.WindowManager;
  */
 
 public class ActivityUtil {
+    private ActivityUtil() {}
 
     // System Bars
 

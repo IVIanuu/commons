@@ -108,7 +108,7 @@ public final class NotificationUtil {
         RemoteInput[] remoteInputs = action.getRemoteInputs();
         PendingIntent pendingIntent = action.actionIntent;
         Intent intent = new Intent();
-        intent.addFlags(268435456);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         Bundle bundle = new Bundle();
         for (RemoteInput remoteIn : remoteInputs) {
             bundle.putCharSequence(remoteIn.getResultKey(), text);
