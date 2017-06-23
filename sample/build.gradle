@@ -22,7 +22,7 @@ android {
 
 dependencies {
     // Commons
-    compile project(':library')
+    compile project(':commons')
 
     // Android Support
     compile 'com.android.support:appcompat-v7:25.3.1'
