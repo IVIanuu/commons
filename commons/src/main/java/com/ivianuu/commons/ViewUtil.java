@@ -12,6 +12,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
  */
 
 package com.ivianuu.commons;
@@ -22,11 +23,11 @@ import android.support.annotation.Px;
 import android.util.DisplayMetrics;
 
 /**
- * Dimension utils
+ * View utils
  */
-public final class DimenUtil {
+public final class ViewUtil {
 
-    private DimenUtil() {
+    private ViewUtil() {
         // no instances
     }
 
@@ -34,7 +35,7 @@ public final class DimenUtil {
      * Converts dp to pixels
      */
     @Px
-    public static int dpToPx(@NonNull Context context, float dp) {
+    public static int convertDpToPx(@NonNull Context context, float dp) {
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
         return (int) (dp * metrics.density);
     }
@@ -42,7 +43,7 @@ public final class DimenUtil {
     /**
      * Converts px to dp
      */
-    public static int pxToDp(@NonNull Context context, float px) {
+    public static int convertPxToDp(@NonNull Context context, float px) {
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
         return (int) (px / metrics.density);
     }
