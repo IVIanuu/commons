@@ -12,35 +12,36 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package com.ivianuu.commons;
 
+import android.content.Context;
 import android.content.res.Configuration;
-
-import static com.ivianuu.commons.Commons.getContext;
+import android.support.annotation.NonNull;
 
 /**
- * @author Manuel Wrage (IVIanuu)
+ * Device utils
  */
 public final class DeviceUtil {
 
-    private DeviceUtil() {}
-
-    /**
-     * Is tablet boolean.
-     *
-     * @return the boolean
-     */
-    public static boolean isTablet() {
-        return (getContext().getResources().getConfiguration().screenLayout
-                & Configuration.SCREENLAYOUT_SIZE_MASK)
-                >= Configuration.SCREENLAYOUT_SIZE_LARGE;
+    private DeviceUtil() {
+        // no instances
     }
 
-    public static boolean hasNavBar () {
-        int id = getContext().getResources().getIdentifier("config_showNavigationBar", "bool", "android");
-        return id > 0 && getContext().getResources().getBoolean(id);
+    /**
+     * Returns whether is tablet
+     */
+    public static boolean isTablet(@NonNull Context context) {
+        return (context.getResources().getConfiguration().screenLayout
+                & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE;
+    }
+
+    /**
+     * Returns whether has navigation bar
+     */
+    public static boolean hasNavigationBar(@NonNull Context context) {
+        int id = context.getResources().getIdentifier("config_showNavigationBar", "bool", "android");
+        return id > 0 && context.getResources().getBoolean(id);
     }
 }

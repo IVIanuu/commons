@@ -12,32 +12,38 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package com.ivianuu.commons;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.annotation.Px;
+import android.util.DisplayMetrics;
 
 /**
- * @author Manuel Wrage (IVIanuu)
+ * Dimension utils
  */
-public final class Commons {
+public final class DimenUtil {
 
-    @SuppressLint("StaticFieldLeak")
-    private static Context context;
-
-    static Context getContext() {
-        if (context == null) throw new IllegalStateException("you have to call Commons.init() first");
-        return context;
+    private DimenUtil() {
+        // no instances
     }
 
     /**
-     * Initializes commons
+     * Converts dp to pixels
      */
-    public static void init(@NonNull Context context) {
-        Commons.context = context.getApplicationContext();
+    @Px
+    public static int dpToPx(@NonNull Context context, float dp) {
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        return (int) (dp * metrics.density);
+    }
+
+    /**
+     * Converts px to dp
+     */
+    public static int pxToDp(@NonNull Context context, float px) {
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        return (int) (px / metrics.density);
     }
 }

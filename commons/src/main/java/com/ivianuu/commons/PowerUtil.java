@@ -21,27 +21,25 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.BatteryManager;
+import android.os.Build;
 import android.os.PowerManager;
-
-import static com.ivianuu.commons.SdkUtil.isLollipop;
+import android.support.annotation.NonNull;
 
 /**
- * @author Manuel Wrage (IVIanuu)
+ * Power utils
  */
 public final class PowerUtil {
 
-    private static final int LOW_BATTERY = 15;
-
-    private PowerUtil() {}
+    private PowerUtil() {
+        // no instances
+    }
 
     /**
-     * Is screen on boolean.
-     *
-     * @return the boolean
+     * Returns whether the screen is on
      */
-    public static boolean isScreenOn() {
-        PowerManager powerManager = (PowerManager) Commons.getContext().getSystemService(Context.POWER_SERVICE);
-        if (isLollipop()) {
+    public static boolean isScreenOn(@NonNull Context context) {
+        PowerManager powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return powerManager.isInteractive();
         } else {
             return powerManager.isScreenOn();
@@ -49,13 +47,11 @@ public final class PowerUtil {
     }
 
     /**
-     * Is plugged boolean.
-     *
-     * @return the boolean
+     * Returns whether the device is charging
      */
-    public static boolean isPlugged() {
+    public static boolean isCharging(@NonNull Context context) {
         IntentFilter intentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
-        Intent intent = Commons.getContext().registerReceiver(null, intentFilter);
+        Intent intent = context.registerReceiver(null, intentFilter);
         if (intent == null) {
             return false;
         }
@@ -63,33 +59,24 @@ public final class PowerUtil {
         final int plugged = intent.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);
         return plugged == BatteryManager.BATTERY_PLUGGED_AC
                 || plugged == BatteryManager.BATTERY_PLUGGED_USB
-                || (SdkUtil.isJellyBeanMr1() && plugged == BatteryManager.BATTERY_PLUGGED_WIRELESS);
+                || (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1
+                && plugged == BatteryManager.BATTERY_PLUGGED_WIRELESS);
     }
 
     /**
-     * Gets battery level.
-     *
-     * @return the battery level
+     * Returns the current battery level
+     * Or -1 if we cannot get the battery level
      */
-    public static int getBatteryLevel() {
-        Intent batteryIntent = Commons.getContext().registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
-        if (batteryIntent == null) return 50;
+    public static int getBatteryLevel(@NonNull Context context) {
+        Intent batteryIntent = context.registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+        if (batteryIntent == null) return -1;
         int level = batteryIntent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
         int scale = batteryIntent.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
 
         if(level == -1 || scale == -1) {
-            return 50;
+            return -1;
         }
 
         return (int) (((float)level / (float)scale) * 100.0f);
-    }
-
-    /**
-     * Is battery low boolean.
-     *
-     * @return the boolean
-     */
-    public static boolean isBatteryLow() {
-        return getBatteryLevel() <= LOW_BATTERY;
     }
 }

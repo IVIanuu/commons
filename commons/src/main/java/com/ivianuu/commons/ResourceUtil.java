@@ -12,31 +12,18 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package com.ivianuu.commons;
 
-import android.support.annotation.NonNull;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * @author Manuel Wrage (IVIanuu)
+ * Resource utils
  */
+public final class ResourceUtil {
 
-public class ListUtil {
-
-    /**
-     * Returns a new list without null values
-     */
-    public static <T> List<T> compact(@NonNull List<T> originalList) {
-        List<T> copy = new ArrayList<>();
-        for (T t : originalList) {
-            if (t != null) copy.add(t);
-        }
-
-        return copy;
+    private ResourceUtil() {
+        // no instances
     }
+
+
 }

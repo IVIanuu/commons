@@ -12,65 +12,95 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package com.ivianuu.commons;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Configuration;
-import android.content.res.Resources;
+import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.annotation.Px;
+import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
-import static com.ivianuu.commons.Commons.getContext;
-
 /**
- * @author Manuel Wrage (IVIanuu)
+ * Screen utils
  */
+@SuppressWarnings("ConstantConditions")
 public final class ScreenUtil {
 
-    private ScreenUtil() {}
-
-    public static boolean isPortrait() {
-        return !isLandscape();
+    private ScreenUtil() {
+        // no instances
     }
 
     /**
-     * Is landscape boolean.
-     *
-     * @return the boolean
+     * Returns whether is portrait
      */
-    public static boolean isLandscape() {
-        return getContext().getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
+    public static boolean isPortrait(@NonNull Context context) {
+        return !isLandscape(context);
     }
 
     /**
-     * Gets rotation.
-     *
-     * @return the rotation
+     * Returns whether is landscape
      */
-    public static int getRotation() {
+    public static boolean isLandscape(@NonNull Context context) {
+        return context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
+    }
+
+    /**
+     * Returns the current rotation
+     */
+    public static int getRotation(@NonNull Context context) {
         WindowManager windowManager =
-                (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+                (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         return windowManager.getDefaultDisplay().getRotation();
     }
 
     /**
-     * Gets screen width.
-     *
-     * @return the screen width
+     * Returns the screen height
      */
-    public static int getScreenWidth() {
-        return Resources.getSystem().getDisplayMetrics().widthPixels;
+    @Px
+    public static int getScreenHeight(@NonNull Context context) {
+        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics metrics = new DisplayMetrics();
+        windowManager.getDefaultDisplay().getMetrics(metrics);
+        return metrics.heightPixels;
     }
 
     /**
-     * Gets screen height.
-     *
-     * @return the screen height
+     * Returns the screen width
      */
-    public static int getScreenHeight() {
-        return Resources.getSystem().getDisplayMetrics().heightPixels;
+    @Px
+    public static int getScreenWidth(@NonNull Context context) {
+        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics metrics = new DisplayMetrics();
+        windowManager.getDefaultDisplay().getMetrics(metrics);
+        return metrics.widthPixels;
     }
 
+    /**
+     * Returns the real screen height
+     */
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+    @Px
+    public static int getRealScreenHeight(@NonNull Context context) {
+        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics metrics = new DisplayMetrics();
+        windowManager.getDefaultDisplay().getRealMetrics(metrics);
+        return metrics.heightPixels;
+    }
+
+    /**
+     * Returns the real screen width
+     */
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+    @Px
+    public static int getRealScreenWidth(@NonNull Context context) {
+        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics metrics = new DisplayMetrics();
+        windowManager.getDefaultDisplay().getRealMetrics(metrics);
+        return metrics.widthPixels;
+    }
 }
