@@ -39,7 +39,7 @@ public final class DrawableUtil {
      * Returns the tinted drawable
      */
     @NonNull
-    public static Drawable getTintedDrawable(@NonNull Context context,
+    public static Drawable createTintedDrawable(@NonNull Context context,
                                              @DrawableRes int drawableRes,
                                              @ColorInt int color) {
         Drawable drawable = ContextCompat.getDrawable(context, drawableRes);
@@ -53,7 +53,7 @@ public final class DrawableUtil {
      * Returns the vector drawable
      */
     @NonNull
-    public static Drawable getVectorDrawable(@NonNull Context context, @DrawableRes int drawableRes) {
+    public static Drawable createVectorDrawable(@NonNull Context context, @DrawableRes int drawableRes) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return context.getDrawable(drawableRes);
         }
@@ -65,10 +65,10 @@ public final class DrawableUtil {
      * Returns the tinted vector drawable
      */
     @NonNull
-    public static Drawable getTintedVectorDrawable(@NonNull Context context,
+    public static Drawable createTintedVectorDrawable(@NonNull Context context,
                                                    @DrawableRes int drawableRes,
                                                    @ColorInt int color) {
-        Drawable drawable = getVectorDrawable(context, drawableRes);
+        Drawable drawable = createVectorDrawable(context, drawableRes);
         drawable.setColorFilter(color, PorterDuff.Mode.SRC_IN);
         drawable.mutate();
 
