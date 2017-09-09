@@ -21,6 +21,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Px;
 import android.util.DisplayMetrics;
+import android.view.View;
 
 /**
  * View utils
@@ -46,5 +47,19 @@ public final class ViewUtil {
     public static int convertPxToDp(@NonNull Context context, float px) {
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
         return (int) (px / metrics.density);
+    }
+
+    /**
+     * Sets the view whether visible or gone
+     */
+    public static void setGone(@NonNull View view, boolean gone) {
+        view.setVisibility(gone ? View.GONE : View.VISIBLE);
+    }
+
+    /**
+     * Sets the view whether visible or invisible
+     */
+    public static void setInvisible(@NonNull View view, boolean invisible) {
+        view.setVisibility(invisible ? View.INVISIBLE : View.VISIBLE);
     }
 }
